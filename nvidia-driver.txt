@@ -1,0 +1,29 @@
+1.安装内核头文件
+  apt install linux-headers-$(uname -r|sed 's/[^-]*-[^-]*-//')
+2.安装驱动
+  apt install nvidia-driver
+  apt install nvidia-xconfig
+3.获得BusID
+  lspci | egrep 'VGA|3D'
+  例如BusID为 PCI:1:0:0
+4.编辑xorg.conf
+  Section "Module"
+    Load "modesetting"
+  EndSection
+ 
+  Section "Device"
+    Identifier "nvidia"
+    Driver "nvidia"
+    BusID "<NVIDIA 显卡的 BusID>"
+    Option "AllowEmptyInitialConfiguration"
+  EndSection
+5.新建/etc/lightdm/display_setup.sh
+  #!/bin/sh
+  xrandr --setprovideroutputsource modesetting NVIDIA-0
+  xrandr --auto
+  xrandr --dpi 96
+5.编辑/etc/lightdm/lightdm.conf,在[Seat:*]下,新增
+  display-setup-script=/etc/lightdm/display_setup.sh
+6.授权
+  chmod +x /etc/lightdm/display_setup.sh
+
