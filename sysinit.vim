@@ -2,7 +2,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=/home/richy/.vim/bundle/Vundle.vim
+set rtp+=/home/zclskon/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -407,6 +407,7 @@ endfunction
 let g:python3_host_prog = '/usr/bin/python3'
 let g:ycm_confirm_extra_conf = 0
 set completeopt-=prevmew
+let g:ycm_global_ycm_extra_conf = '/usr/share/nvim/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
