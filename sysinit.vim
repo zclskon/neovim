@@ -168,7 +168,7 @@ syntax enable
 " Enable 256 colors palette in Gnome Terminal
 set background=dark
 colorscheme solarized
-set t_Co=16
+set t_Co=256
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
@@ -202,9 +202,9 @@ set expandtab
 " Be smart when using tabs ;)
 set smarttab
 
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+" 1 tab == 2 spaces
+set shiftwidth=2
+set tabstop=2
 
 " Linebreak on 500 characters
 set lbr
@@ -405,9 +405,9 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 
 let g:python3_host_prog = '/usr/bin/python3'
-let g:ycm_confirm_extra_conf = 0
-set completeopt-=prevmew
 let g:ycm_global_ycm_extra_conf = '/usr/share/nvim/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+set completeopt-=preview
 let g:ycm_autoclose_preview_window_after_completion = 1
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
